@@ -1,0 +1,50 @@
+page-notification {
+    .notifistat{
+        text-align: center;
+    }
+    .notificationi{
+        font-size: 32px;
+        width: auto;
+        margin: 0 auto;
+        color: #1e953e;
+        display: block;
+        text-align: center;
+    }
+    .notificationic{
+        font-size: 32px;
+        width: auto;
+        margin: 0 auto;
+        color: #a01b1b;
+        display: block;
+        text-align: center;
+    }
+    .notificationh{
+        color: #2C9546;
+        font-size: 20px;
+    }
+    .notificationh1{
+        font-size: 20px;
+    }   
+    .time ion-icon{
+        font-size: 0.7em;
+    }
+    .card-content-md{
+        padding:5px 10px;
+    }
+    .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+        color: #fff;
+    }
+    .unreaded{    
+        background: #66c17f;
+        color: #fff;
+        .row .col p.ng-tns-c0-1{
+            color: #fff;
+        }
+        .row .col .notificationi{
+            color: #fff;
+        }
+        p{
+            color: #fff;
+        }
+    }
+}

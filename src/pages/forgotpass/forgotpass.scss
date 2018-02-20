@@ -1,0 +1,141 @@
+page-forgotpass {
+    .logoimg {
+        background: #F7F9F8;
+        padding: 5em 30px 20px 30px;
+    }
+    .rowfield{
+        border: 1px solid #019535;
+    }
+    input{
+        border: none;
+    }
+    ion-icon{
+        color: #fff;    
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+    }
+    .foricon{
+        border-right: 1px solid;
+        color: #027229;
+    }
+    ion-grid {
+        height: 100%;
+        justify-content: center;
+    }
+    .ftpass{
+        text-align: right;
+        padding: 10px 0 0 0;
+    }
+    .loginb{
+        color: #fff;
+        background-color: #019535;
+        width: 100%;        
+    }
+    .submiti ion-label.label.label-md{
+        margin: 0px 8px 13px 0px;
+    }
+    .submitc{
+        padding: 0px;
+    }
+    .logincon{
+        background-image: url(../assets/easypo/main-bg.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    input{
+        width: 100%;
+    }
+    //testing
+    .logincard{
+        margin: 0 auto;
+        width: 100%;
+        box-shadow: none;
+    }
+    .grid{
+    margin: 0 auto;
+    width: 22em;
+    }
+    .paperplane{
+        position: absolute;
+        height: 70px;
+        width: 70px;
+        border-radius: 40px;
+        border: 3px solid white;
+        left: 50%;
+        margin-left: -30px;
+        top: -37px;
+        background: #1E953E;
+    }
+    .paperplanebg{  
+        display: block;
+        width: 100%;
+        position: relative;
+    }
+    .paperplanei{
+        color: #fff;
+        line-height: 60px;
+        font-size: 2.5em;
+        margin: 0 auto;
+        display: block;
+        border: none;
+    }
+    .customcard{
+        background: #f7f9f8;
+        box-shadow: 1px 1px 7px #a29d9d
+    }
+    // input.invalid.ng-invalid.ng-dirty.ng-touched {
+    //     .rowfield{
+    //         border: 1px solid #019535;
+    //     }
+    // }
+
+
+    // Show validation
+
+      .animate-slide p {
+        width: 70%;
+        background: #e42c2c;
+        margin: 0 auto;
+        padding: 5px;
+        text-align: center;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    #curvedarrow {
+        position: relative;
+        width: 0px;
+        height: 0;
+        right: 106px;
+        top: -7px;
+        border-top: 16px solid transparent;
+        border-right: 16px solid #e42c2c;
+        margin: 0 auto;
+        -webkit-transform: rotate(265deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+      }
+      #curvedarrow:after {
+        content: "";
+        position: absolute;
+        border: 0 solid transparent;
+        border-top: 10px solid #e42c2c;
+        border-radius: 20px 0px 0 0;
+        top: -21px;
+        right: -10px;
+        width: 22px;
+        height: 17px;
+        -webkit-transform: rotate(60deg);
+        -moz-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+        -o-transform: rotate(60deg);
+      }
+      .button-md.activated{
+        background-color: #76e293;
+    }
+    .pagetitle{
+        text-align: center;
+    }
+}

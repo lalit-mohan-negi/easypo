@@ -1,0 +1,284 @@
+<!--
+  Generated template for the OrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>ORDER#{{po_number}}</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only  class="options-button" (click)="notification()"><ion-icon name="ios-notifications-outline"></ion-icon></button>
+      <ion-badge item-end class="notificationbadge" *ngIf="noticount>0" >{{noticount}}</ion-badge>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div>
+    <p class="orderfrst">PURCHASED BY:</p>
+
+    <ion-row  align-items-center> 
+      <ion-col col-3 class="rcntfst">
+        <img class="recentimg" *ngIf="dofDetail.profileimg" src="{{profilepicURl}}{{dofDetail.profileimg}}">
+        <img class="recentimg" *ngIf="!dofDetail.profileimg" src="./assets/easypo/profile1.png">
+      </ion-col>
+      <ion-col>
+        <h6 class="rcntth">
+          {{dofDetail.purchaser_name}}
+        </h6>
+        <h6 class="rcnth">
+          PO#
+          <span>
+            {{dofDetail.po_number}}
+          </span>
+        </h6>
+        <h6 class="rcntth">
+          {{dofDetails.cost}} USD
+        </h6>
+      </ion-col>
+      <ion-col col-3>   
+        <p class="rcntthrd1">
+          <span>
+            Delivery Date:
+          </span>
+          {{dofDetail.delivery_date}}
+        </p>  
+        <button ion-button class="rcntbtnop" *ngIf="dofDetail.status=='0'">
+          OPEN
+        </button>
+        <button ion-button class="rcntbtnca" *ngIf="dofDetail.status=='1'">
+          CANCELLED
+        </button>
+        <button ion-button class="rcntbtnP" *ngIf="dofDetail.status=='2'">
+          PENDING
+        </button>
+        <button ion-button class="rcntbtnpa" *ngIf="dofDetail.status=='3'">
+          PARTIAL
+        </button>
+        <button ion-button class="rcntbtn" *ngIf="dofDetail.status=='4'">
+          PAID
+        </button>
+        <button ion-button class="rcntbtnco" *ngIf="dofDetail.status=='5'">
+          COMPLETED
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <p class="orderfrst">VENDOR: {{dofDetail.vendor_name}}</p>
+
+  </div>
+
+  <div>
+    <div class="orderpdd">
+      <ion-segment class="segmentout" [(ngModel)]="order">
+        <ion-segment-button value="bill">
+          BILL TO
+        </ion-segment-button>
+        <ion-segment-button value="ship">
+          SHIP TO
+        </ion-segment-button>
+        <ion-segment-button value="sales">
+          VENDOR
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div [ngSwitch]="order" class="orderpdd1"> 
+      <ion-list *ngSwitchCase="'bill'">
+        <ion-item class="orderitem">
+          <ion-row>
+            <ion-col>
+              <p *ngIf="dofDetails.bill_to_facility_name">{{dofDetails.bill_to_facility_name}}</p>
+              <p *ngIf="dofDetails.bill_to_phone">{{dofDetails.bill_to_phone}}</p>
+            </ion-col>
+            <ion-col>
+              <p *ngIf="dofDetails.bill_to_address">{{dofDetails.bill_to_address}}</p>
+              <p *ngIf="dofDetails.bill_to_state">{{dofDetails.bill_to_state}}</p>
+              <p *ngIf="dofDetails.bill_to_zipcode">{{dofDetails.bill_to_zipcode}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+      <ion-list *ngSwitchCase="'ship'">
+        <ion-item class="orderitem">
+          <ion-row>
+            <ion-col>
+              <p *ngIf="dofDetails.ship_to_attention">{{dofDetails.ship_to_attention}}</p>
+              <p *ngIf="dofDetails.ship_to_phone">{{dofDetails.ship_to_phone}}</p>
+            </ion-col>
+            <ion-col>
+              <p *ngIf="dofDetails.ship_to_address">{{dofDetails.ship_to_address}}</p>
+              <p *ngIf="dofDetails.ship_to_state">{{dofDetails.ship_to_state}}</p>
+              <p *ngIf="dofDetails.ship_to_zipcode">{{dofDetails.ship_to_zipcode}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+      <ion-list *ngSwitchCase="'sales'">
+        <ion-item class="orderitem">
+          <ion-row>
+            <ion-col>
+              <p *ngIf="dofDetails.vendor_email">{{dofDetails.vendor_email}}</p>
+              <p *ngIf="dofDetails.vendor_phone">{{dofDetails.vendor_phone}}</p>
+            </ion-col>
+            <ion-col>
+              <p *ngIf="dofDetails.vendor_address">{{dofDetails.vendor_address}}</p>
+              <p *ngIf="dofDetails.vendor_state">{{dofDetails.vendor_state}}</p>
+              <p *ngIf="dofDetails.vendor_city">{{dofDetails.vendor_city}}</p>
+              <p *ngIf="dofDetails.vendor_zipcode">{{dofDetails.vendor_zipcode}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </div>  
+
+  </div>    
+
+  <div>
+    <p class="orderfrst">Delivery Order Item:</p>
+    <ion-list>
+      <ion-list-header>
+        <ion-row>
+          <ion-col col-2 class="orderfrsthead">
+            ITEM
+          </ion-col>
+          <ion-col col-2 class="orderfrsthead">
+            LOT#
+          </ion-col>
+          <ion-col col-1 class="orderfrsthead">
+            QTY
+          </ion-col>
+          <ion-col col-3 class="orderfrsthead">
+            UNIT PRICE
+          </ion-col>
+          <ion-col col-4 class="orderfrsthead">
+            TOTAL COST(USD)
+          </ion-col>
+        </ion-row>
+      </ion-list-header>
+      <ion-item class="orderfrsthd" *ngFor="let poList of dofDetail.product_dof">
+        <ion-row>
+          <ion-col col-2>
+            {{poList.item}}
+          </ion-col>
+          <ion-col col-2>
+            {{poList.lot}}
+          </ion-col>
+          <ion-col col-1>
+            {{poList.quantity}}
+          </ion-col>
+          <ion-col col-3>
+            {{poList.unit_price}} USD
+          </ion-col>
+          <ion-col col-4>
+            {{poList.total_cost}} USD
+          </ion-col>
+        </ion-row>
+        <ion-row class="ordrrow">
+          <ion-col>
+            <span class="ordrdes">Description: </span>{{poList.description}}
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </div>
+    
+  <div *ngIf="dofDetails.notes!=null||dofDetails.notes!=''" [hidden]="dofDetails.notes==null||dofDetails.notes==''">
+      <ion-list>
+        <p class="orderfrst">Rep Notes:</p>
+        <ion-list>
+          <p>{{dofDetails.notes}}</p>
+        </ion-list>
+      </ion-list>
+    </div>
+    <button ion-button type="button" class="attachmentbtn" *ngIf="dofDetails.attachment" [hidden]="!dofDetails.attachment" (click)="openattachment(dofDetails.attachment)">Attachment</button>
+
+  <div *ngIf="dofDetail.comment" [hidden]="!dofDetail.comment">
+    <p class="orderfrst">Comment:</p>
+    <p>{{dofDetail.comment}}</p>
+  </div>
+
+  <div>
+    <ion-list>
+      <ion-list-header class="orderdeader1">
+        <ion-row>
+          <ion-col class="orderfrsthead">
+            <p>Subtotal:</p>
+            <p>Processing Fee:</p>
+            <p>Shipping and Handling:</p>
+          </ion-col>
+          <ion-col col-2 class="orderfrsthead1">
+            <p *ngIf="dofDetails.cost>=0">{{dofDetails.cost - dofDetails.processing_fee - dofDetails.shipping}}</p>
+            <p *ngIf="dofDetails.processing_fee>=0">{{dofDetails.processing_fee}}</p>
+            <p *ngIf="dofDetails.shipping>=0">{{dofDetails.shipping}}</p>
+          </ion-col>
+          <ion-col col-2 class="orderfrsthead1">
+            <p>USD</p>
+            <p>USD</p>
+            <p>USD</p>
+          </ion-col>
+        </ion-row>
+      </ion-list-header>
+      <ion-item class="orderfrsthd orderdeader1">
+        <ion-row>
+          <ion-col class="orderfrsthead">
+            <p>Total Cost:</p>
+          </ion-col>
+          <ion-col col-2 class="orderfrsthead1">
+            <p *ngIf="dofDetails.cost">{{dofDetails.cost}}</p>
+          </ion-col>
+          <ion-col col-2 class="orderfrsthead1">
+            <p>USD</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- <ion-row [hidden]="dofDetail.status==1">
+    <ion-col class="colorderbutton" [hidden]="dofDetail.status==4">
+      <ion-select [(ngModel)]="action" *ngIf="actionactive" [hidden]="!actionactive" placeholder="Select Status"  (ionChange)="changeStatusfinal(dofDetail.id, c.value)" #c >
+        <ion-option value="3">Partial</ion-option>
+        <ion-option value="5">Complete</ion-option>
+        <ion-option value="4">Paid</ion-option>
+      </ion-select>
+    </ion-col>
+  </ion-row> -->
+
+  <!-- <ion-row *ngIf="dofDetail.status!=undefined ">
+    <ion-col class="colorderbutton" *ngIf="dofDetail.status==2" [hidden]="dofDetail.status!=2">
+      <button ion-button class="orderbutton accept" (click)="acceptpo(dofDetail.id)">Accept</button>
+    </ion-col>
+    <ion-col class="colorderbutton" *ngIf="dofDetail.status!=2" [hidden]="dofDetail.status==4||dofDetail.status==1">
+      <button ion-button class="orderbutton cancel" (click)="actionClick(dofDetail.id)">Action</button>
+    </ion-col>
+    <ion-col class="colorderbutton" *ngIf="dofDetail.status==2" [hidden]="dofDetail.status!=2">
+      <button ion-button class="orderbutton revise" (click)="showConfirm(dofDetail.id)">Decline</button>
+    </ion-col>
+  </ion-row> -->
+
+
+  <ion-row class="custom-row">
+    <ion-col col-6>
+      <button *ngIf="canceled_btn" ion-button (click)="Canceled(dofDetail.id)">Canceled</button>
+    </ion-col>
+    <ion-col col-6>
+      <button *ngIf="completed_btn" ion-button (click)="Completed(dofDetail.id)">Completed</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="custom-row">
+    <ion-col>
+      <button *ngIf="download" ion-button (click)="download()">Download</button>
+    </ion-col>
+  </ion-row>
+
+  
+
+  
+
+</ion-content>

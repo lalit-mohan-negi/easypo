@@ -1,0 +1,65 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+      <ion-title text-center>Forgot Password</ion-title>
+      <ion-buttons right>
+        <button ion-button icon-only><ion-icon name=""></ion-icon></button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+<ion-content class="logincon" hide-nav-bar="true">
+    <div class="rectangle">
+      <div class="circle"></div>
+    </div>
+    <ion-grid>
+
+      <div class="customcard">
+          
+            <div class="paperplanebg" >
+              <img class="logoimg" src="./assets/easypo/logo.png"/>
+              <div class="paperplane">  
+                <ion-icon class="paperplanei" name="ios-paper-plane"></ion-icon>
+              </div>
+            </div> 
+          <form [formGroup]="fform" (ngSubmit)="forgotpcall()" novalidate>
+          <ion-card class="logincard">
+            <ion-card-content>
+              <div class="animate-slide" [@fadeInOut] *ngIf="!fform.controls.email.valid  && (fform.controls.email.dirty || submitAttempt) && !fform.controls.email.pending" >
+                <p *ngIf="fform.value.email != ''">Email not valid</p>
+                <p *ngIf="fform.value.email == ''">Email required</p>
+                <div id="curvedarrow"></div>
+              </div>
+              <ion-item>
+                <ion-row class="rowfield" align-items-center >
+                  <ion-col col-2  align-self-center >
+                    <ion-icon class="foricon" name="ios-contact-outline"></ion-icon>
+                  </ion-col>
+                  <ion-col col-10 align-self-center>
+                    <input type="email" placeholder="Email" trim formControlName="email" class="ng-trim-ignore" [(ngModel)]="email" required/>
+                  </ion-col>
+                </ion-row>
+              </ion-item>
+            <ion-item class="submiti">
+              <ion-row align-items-center>
+                <ion-col class="submitc">
+                  <button class="loginb" ion-button>Change Password</button>
+                </ion-col>
+              </ion-row>
+            </ion-item>    
+            </ion-card-content>
+          </ion-card>
+        </form>
+
+      </div>
+
+    </ion-grid>
+
+
+</ion-content>

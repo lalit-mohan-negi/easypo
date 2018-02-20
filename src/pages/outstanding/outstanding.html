@@ -1,0 +1,124 @@
+<!--
+  Generated template for the OutstandingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>PO HISTORY</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only  class="options-button" (click)="notification()"><ion-icon name="ios-notifications-outline"></ion-icon></button>
+      <ion-badge item-end class="notificationbadge" *ngIf="noticount>0" >{{noticount}}</ion-badge>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar (ionInput)="getItems(posrch)" [(ngModel)]="posrch"></ion-searchbar>
+  <!-- <ion-row>
+    <ion-col class="dof">
+      COMPLETED PO 
+    </ion-col>
+  </ion-row> -->
+  <div *ngIf="poList.length==0" [hidden]="poList.length>0">
+    <p class="blankar"><ion-icon ios="ios-alert" md="md-alert"></ion-icon>&nbsp;Nothing in Purchase Order History</p>
+  </div>  
+  <div *ngIf="poList.length>0" [hidden]="poList.length==0">
+    <ion-card *ngFor="let PO of poList">
+        <ion-card-content class="reqst" (click)="orderpage(PO.id, PO.po_number)">
+          <ion-row  align-items-center> 
+            <ion-col col-3 class="purchby">
+              Purchased by
+            </ion-col>
+            <ion-col class="time">
+              <ion-icon name="md-calendar"> &nbsp; On {{PO.created_at | date:'MMM dd yyyy'}}</ion-icon>
+            </ion-col>
+            <ion-col col-4 class="time">
+              <ion-icon name="md-time"> &nbsp; {{PO.created_at | slice:11:19}}</ion-icon>
+            </ion-col>
+          </ion-row>  
+          <ion-row  align-items-center> 
+            <ion-col col-3 class="rcntfst">
+              <img class="recentimg" *ngIf="PO.profile_img" src="{{profilepicURl}}{{PO.profile_img}}">
+              <img class="recentimg" *ngIf="!PO.profile_img" src="./assets/easypo/profile1.png">
+            </ion-col>
+            <ion-col col-4>
+              <h6 class="rcntth">
+                {{PO.purchaser_name}}
+              </h6>
+              <h6 class="rcnth">
+                PO#
+                <span>
+                  {{PO.po_number}}
+                </span>
+              </h6>
+              <h6 class="rcntth">
+                {{PO.cost | currency:'USD':true:'1.2-2'}}
+              </h6>
+            </ion-col>
+            <ion-col class="rcnthrd">
+              <!-- <p class="rcntthrd1">
+                <span>
+                  Submitted:
+                </span>
+                {{PO.created_at | date:'MMM dd yyyy'}}
+              </p> -->
+              <p class="rcntthrd1">
+                <span>
+                  Last Modified:
+                </span>
+                {{PO.updated_at | date:'MMM dd yyyy'}}
+              </p>
+              <p class="rcntthrd1" *ngIf="PO.outdated!=true" [hidden]="PO.outdated==true">
+                <span>
+                  Vendor Name:
+                </span>
+                {{PO.vendor_name}}
+              </p>
+              <p class="rcntthrd1">
+                <span>
+                  Delivery Date:
+                </span>
+                {{PO.delivery_date | date:'MMM dd yyyy'}}
+              </p>
+              <p class="rcntthrd1" *ngIf="PO.outdated==true" [hidden]="PO.outdated!=true">
+                <span>
+                  Delivery Date:
+                </span>
+                <b style="color:rgb(128, 4, 4)">Outdated</b>
+              </p>
+
+              <button ion-button class="rcntbtnop" *ngIf="PO.status=='0'">
+                OPEN
+              </button>
+              <button ion-button class="rcntbtnca" *ngIf="PO.status=='1'">
+                CANCELLED
+              </button>
+              <button ion-button class="rcntbtnP" *ngIf="PO.status=='2'">
+                PENDING
+              </button>
+              <button ion-button class="rcntbtnpa" *ngIf="PO.status=='3'">
+                PARTIAL
+              </button>
+              <button ion-button class="rcntbtn" *ngIf="PO.status=='4'">
+                PAID
+              </button>
+              <button ion-button class="rcntbtnco" *ngIf="PO.status=='5'">
+                COMPLETED
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+  </div>
+
+</ion-content>

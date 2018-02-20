@@ -1,0 +1,172 @@
+<!--
+  Generated template for the DeliveryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>DELIVERED ORDER FORM</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only  class="options-button" (click)="notification()"><ion-icon name="ios-notifications-outline"></ion-icon></button>
+      <ion-badge item-end class="notificationbadge" *ngIf="noticount>0" >{{noticount}}</ion-badge>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+  <div class="deliverypad">
+    <ion-segment class="segmentout" [(ngModel)]="pet">
+      <ion-segment-button value="outstanding">
+        OUTSTANDING DOF
+      </ion-segment-button>
+      <ion-segment-button value="completed">
+        COMPLETED DOF
+      </ion-segment-button>
+    </ion-segment>
+  </div>  
+
+    <div [ngSwitch]="pet">
+      <ion-list *ngSwitchCase="'outstanding'">
+        <ion-searchbar (ionInput)="getpenItems(penDofse)" [(ngModel)]="penDofse"></ion-searchbar>
+        <ion-item>
+          <div *ngIf="penDOF.length==0">
+            <p class="blankar"><ion-icon ios="ios-alert" md="md-alert"></ion-icon>&nbsp;No Pending DOF</p>
+          </div>  
+          <div *ngIf="penDOF.length>0">
+            <ion-card *ngFor="let DOF of penDOF">
+                <ion-card-content class="reqst" (click)="orderpage(DOF.id, DOF.dof_no)">
+                  <ion-row  align-items-center> 
+                    <ion-col col-3>
+                      Created by
+                    </ion-col>
+                    <ion-col class="time">
+                      <ion-icon name="md-calendar"> &nbsp; On {{DOF.created_at | date:'MMM dd yyyy'}}</ion-icon>
+                    </ion-col>
+                    <ion-col col-4 class="time">
+                      <ion-icon name="md-time"> &nbsp; {{DOF.created_at | slice:11:19}}</ion-icon>
+                    </ion-col>
+                  </ion-row>  
+                  <ion-row  align-items-center> 
+                    <ion-col col-3 class="rcntfst">
+                      <img class="recentimg" *ngIf="DOF.profile_img" [hidden]="!DOF.profile_img" src="{{profilepicURl}}{{DOF.profile_img}}">
+                      <img class="recentimg" *ngIf="!DOF.profile_img" [hidden]="DOF.profile_img" src="./assets/easypo/profile1.png">
+                    </ion-col>
+                    <ion-col col-4>
+                      <h6 class="rcntth">
+                        {{DOF.sales_rep}}
+                      </h6>
+                      <h6 class="rcnth">
+                        DOF#
+                        <span>
+                          {{DOF.dof_no}}
+                        </span>
+                      </h6>
+                      <h6 class="rcntth">
+                        {{DOF.cost | currency:'USD':true:'1.2-2' | slice:1:50}} USD
+                      </h6>
+                    </ion-col>
+                    <ion-col class="rcnthrd">
+                      <p class="rcntthrd1">
+                        <span>
+                          Submitted:
+                        </span>
+                        {{DOF.created_at | date:'MMM dd yyyy'}}
+                      </p>
+                      <p class="rcntthrd1">
+                        <span>
+                          Last Modified:
+                        </span>
+                        {{DOF.updated_at | date:'MMM dd yyyy'}}
+                      </p>
+                      <p class="rcntthrd1">
+                        <span>
+                          Facility Name:
+                        </span>
+                        {{ (DOF.bill_to_facility_name.length>12)? (DOF.bill_to_facility_name | slice:0:12)+'..':(DOF.bill_to_facility_name)}}
+                      </p>
+                    </ion-col>
+                  </ion-row>
+                </ion-card-content>
+              </ion-card>
+          </div>
+        </ion-item>
+      </ion-list>
+    
+      <ion-list *ngSwitchCase="'completed'">
+        <ion-item>
+          <ion-searchbar (ionInput)="getcomItems(comDofse)" [(ngModel)]="comDofse"></ion-searchbar>
+          <div *ngIf="comDOF.length==0">
+            <p class="blankar"><ion-icon ios="ios-alert" md="md-alert"></ion-icon>&nbsp;No Completed DOF</p>
+          </div>  
+          <div *ngIf="comDOF.length>0">
+            <ion-card *ngFor="let DOF of comDOF">
+              <ion-card-content class="reqst" (click)="orderpage(DOF.id, DOF.dof_no)">
+                <ion-row  align-items-center> 
+                  <ion-col col-3>
+                    Created by
+                  </ion-col>
+                  <ion-col class="time">
+                    <ion-icon name="md-calendar"> &nbsp; On {{DOF.created_at | date:'MMM dd yyyy'}}</ion-icon>
+                  </ion-col>
+                  <ion-col col-4 class="time">
+                    <ion-icon name="md-time"> &nbsp; {{DOF.created_at | slice:11:19}}</ion-icon>
+                  </ion-col>
+                </ion-row>  
+                <ion-row  align-items-center> 
+                  <ion-col col-3 class="rcntfst">
+                    <img class="recentimg" *ngIf="DOF.profile_img" [hidden]="!DOF.profile_img" src="{{profilepicURl}}{{DOF.profile_img}}">
+                    <img class="recentimg" *ngIf="!DOF.profile_img" [hidden]="DOF.profile_img" src="./assets/easypo/profile1.png">
+                  </ion-col>
+                  <ion-col col-4>
+                    <h6 class="rcntth">
+                      {{DOF.sales_rep}}
+                    </h6>
+                    <h6 class="rcnth">
+                      DOF#
+                      <span>
+                        {{DOF.dof_no}}
+                      </span>
+                    </h6>
+                    <h6 class="rcntth">
+                      {{DOF.cost | currency:'USD':true:'1.2-2' | slice:1:50}} USD
+                    </h6>
+                  </ion-col>
+                  <ion-col class="rcnthrd">
+                    <p class="rcntthrd1">
+                      <span>
+                        Submitted:
+                      </span>
+                      {{DOF.created_at | date:'MMM dd yyyy'}}
+                    </p>
+                    <p class="rcntthrd1">
+                      <span>
+                        Last Modified:
+                      </span>
+                      {{DOF.updated_at | date:'MMM dd yyyy'}}
+                    </p>
+                    <p class="rcntthrd1">
+                      <span>
+                        Facility Name:
+                      </span>
+                      {{ (DOF.bill_to_facility_name.length>12)? (DOF.bill_to_facility_name | slice:0:12)+'..':(DOF.bill_to_facility_name)}}
+                    </p>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>  
+
+</ion-content>

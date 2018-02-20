@@ -1,0 +1,194 @@
+page-createdfo {
+    .back-button-icon-md{
+        color: #fff;
+    }
+    .scroll-content {
+        padding: 8px;
+    }
+    p{
+        margin: 3px 0;
+        font-size: 12px;
+        span{
+            font-weight: bold;
+        }
+    }
+    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated{
+        background-color: #0D5423;
+        color: #fff;
+    }
+    .segment-md .segment-button{
+        background-color: #1E953E;
+        color: #fff;
+    }
+    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+        border-bottom: none;
+    }
+    .orderpdd{
+        padding: 16px 5px 0 5px;
+    }
+    .orderpdd1{
+        padding: 0 5px 0 5px;
+    }
+    .orderitem{
+       
+    }
+    .orderfrst{
+        padding: 0 5px;
+        font-weight: bold;
+    }
+    .list-header-md{
+        border-top: none;
+        background: #1E953E;
+        margin: 0;
+        padding: 0;
+    }
+    .orderfrsthead{
+        color: #fff;
+        p{
+        color: #212121;
+        font-size: 12px;
+        }
+    }
+    .orderfrsthead1 {
+        text-align: right;
+        p{
+        color: #212121;
+        font-size: 12px;
+        }
+    }
+    .label-md {
+        margin: 2px 2px 2px 0;
+    }
+    .orderfrsthd{
+        border: 1px solid #ece7e7;
+        padding: 0px;
+    }
+    .col{
+        font-size: 11px;
+    }
+    .list-md .item-block .item-inner{
+        padding: 0px;
+    }
+    .orderdeader1{
+        background: #F4F4F4;
+        border: 1px solid #ece7e7;
+    }
+    .orderbutton{
+        width: 100%;
+        margin: 0px;
+        box-shadow: none;
+    }
+    .colorderbutton{
+        padding: 0px 1px;
+    }
+    .cancel{
+        background: #afaaaa;
+    }
+    .close{
+        background: #1E953E;
+    }
+    .revise{
+        background: #EF9B31!important;
+    }
+    .billto p{
+        font-size: 1.0em;
+    }
+    .bssa{
+        background: #dedede;
+    }
+    .item-md {
+        background-color: transparent;
+        border-bottom: 1px solid #e0dada;
+    }
+    .ordrdes{
+        color: #1E953E;
+        font-weight: bold;
+    }
+    .ordrrow{
+        border: 1px solid #b5b9b6;
+    }
+    .repnotes{
+        background: #f3f1f1;
+        border: 1px solid #bdb7b7;
+    }
+    .attachfl{
+        height: 100%;
+        margin: 0;
+        width: 100%;
+    }
+
+    button.attachfl.disable-hover.button.button-md.button-default.button-default-md.ng-star-inserted {
+        width: 107px;
+        height: 36px;
+    }
+
+
+    .attachmentbtn{
+        background-color: #1E953E;
+    }
+    .ordrrow ion-col{
+        white-space: normal;
+    }
+
+    .notificationbadge{
+        border-radius: 50px;
+        color: #1e953e;
+        background-color: #ffffff;
+        position: absolute;
+        top: -4px;
+        left: 18px;
+        padding: 2px;
+    }
+    .options-button{
+        position: relative;
+    }
+    page-order .col {
+        font-size: 11px;
+        padding: 5px 2px;
+    }
+    ion-col.col {
+        white-space: normal;
+        padding: 5px 2px;
+    }
+    .adddoi ion-icon.icon.icon-md.ion-md-add-circle {
+        float: right;
+        font-size: 20px;
+    }
+    .adddoi ion-icon.icon.icon-md.ion-md-remove {
+        float: right;
+        font-size: 20px;
+    }
+    .item-cover{
+        height: auto;
+    }
+    .table {
+        border: 1px solid #1e953e !important;
+        padding: 0px;
+    }
+    input{
+        width: 100%;
+        border: none;
+    }
+    .validation{
+        color: #e60a0a;
+    }
+    .select-md {
+        padding: 0;
+        overflow: visible;
+    }
+    .datetime-md{
+        padding: 0px !important;
+    }
+    .table [col-4] {
+        border-right: 1px solid;
+        margin-right: 15px;
+    }
+    .button-md {
+        font-size: 1.0rem;
+        text-transform: initial;
+        background-color: #1e953e;
+    }
+    ion-input.inptfld.input.input-md.ng-dirty.ng-invalid.ng-touched {
+        border-bottom: 1px solid red;
+    }
+}

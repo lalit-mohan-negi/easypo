@@ -1,0 +1,111 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <ion-buttons left>
+        <button ion-button icon-only menuToggle>
+          <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title text-center>DASHBOARD</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only  class="options-button" (click)="notification()"><ion-icon name="ios-notifications-outline"></ion-icon></button>
+      <ion-badge item-end class="notificationbadge" *ngIf="noticount>0" >{{noticount}}</ion-badge>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content parallax-header>
+
+  <div class="dashsubhead header-image" >
+    <img *ngIf="data.profile_img; else other1" class="dashsubimg" src="{{profilepicURl}}{{data.profile_img}}" >
+    <ng-template #other1>
+      <img class="dashsubimg" src="./assets/easypo/profile1.png" src-fallback="./assets/easypo/Ripple.svg" (loaded)="onLoaded($event)">
+    </ng-template>
+    <h4 class="dashtitle">
+      Welcome to {{data.first_name}}&nbsp;{{data.last_name}}
+    </h4>
+  </div>
+  <div class="main-content">
+      <div class="statistics">
+        <p class="sthead">STATISTICS</p>
+        <ion-row>
+          <ion-col class="statcol">
+            <h1 class="stttl">{{pocount.pen_po}}</h1>
+            <h6>OUTSTANDING PO</h6>
+          </ion-col>
+          <ion-col class="statcol">
+            <h1 class="stttl">{{pocount.com_po}}</h1>
+            <h6>COMPLETED PO</h6>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div class="recentac">
+        <ion-row>
+          <ion-col>
+            <h6 class="recenthead">
+              RECENT ACTIVITY:
+            </h6>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="recentpo.length==0">
+          <p class="blankar"><ion-icon ios="ios-alert" md="md-alert"></ion-icon>&nbsp;No recent Activity</p>
+        </div>  
+        <div *ngIf="recentpo.length!=0">
+          <ion-card *ngFor="let DoF of recentpo">
+            <ion-card-content class="reqst" (click)="orderpage(DoF.id, DoF.po_number)">
+              <ion-row  align-items-center> 
+                <ion-col col-3 class="rcntfst">
+                  Purchased by
+                  <img *ngIf="DoF.profile_img; else other" class="recentimg"  src="{{profilepicURl}}{{DoF.profile_img}}" src-fallback="./assets/easypo/Ripple.svg" (loaded)="onLoaded($event)">
+                  <ng-template #other>
+                    <img class="recentimg" src="./assets/easypo/profile1.png" src-fallback="./assets/easypo/Ripple.svg" (loaded)="onLoaded($event)">
+                  </ng-template>
+                </ion-col>
+                <ion-col col-4 class="rcnthrd">
+                  <h6 class="rcntth">
+                    {{DoF.purchaser_name}}
+                  </h6>
+                  <h6 class="rcnth">
+                    PO#
+                    <span>
+                      {{DoF.po_number}}
+                    </span>
+                  </h6>
+                  <button ion-button class="rcntbtnop" *ngIf="DoF.status=='0'">
+                    OPEN
+                  </button>
+                  <button ion-button class="rcntbtnca" *ngIf="DoF.status=='1'">
+                    CANCELLED
+                  </button>
+                  <button ion-button class="rcntbtnP" *ngIf="DoF.status=='2'">
+                    PENDING
+                  </button>
+                  <button ion-button class="rcntbtnpa" *ngIf="DoF.status=='3'">
+                    PARTIAL
+                  </button>
+                  <button ion-button class="rcntbtn" *ngIf="DoF.status=='4'">
+                    PAID
+                  </button>
+                  <button ion-button class="rcntbtnco" *ngIf="DoF.status=='5'">
+                    COMPLETED
+                  </button>
+                </ion-col>
+                <ion-col class="rcnthrd">
+                  <ion-icon name="md-calendar"> &nbsp; On {{DoF.created_at | date:'MMM dd yyyy' }}</ion-icon>
+                  <!-- <ion-icon name="md-time"> &nbsp; {{DoF.created_at | slice:11:19}}</ion-icon> -->
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+  </div>
+</ion-content>

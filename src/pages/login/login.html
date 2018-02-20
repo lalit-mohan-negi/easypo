@@ -1,0 +1,72 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content class="logincon" hide-nav-bar="true" overflow-scroll>
+  <br>
+    <div class="rectangle">
+      <div class="circle"></div>
+    </div>
+    <ion-grid>
+
+      <div class="customcard">
+          
+            <div class="paperplanebg" >
+              <img class="logoimg" src="./assets/easypo/logo.png"/>
+              <div class="paperplane">  
+                <ion-icon class="paperplanei" name="ios-paper-plane"></ion-icon>
+              </div>
+            </div>
+          <form [formGroup]="form" (ngSubmit)="logincall()" >
+          <ion-card class="logincard">
+            <ion-card-content>
+              <div class="animate-slide" [@fadeInOut] *ngIf="!form.controls.email.valid  && (form.controls.email.dirty || submitAttempt) && !form.controls.email.pending" >
+                <p *ngIf="form.value.email != ''">Email not valid</p>
+                <p *ngIf="form.value.email == ''">Email required</p>
+                <div id="curvedarrow"></div>
+              </div>
+              <ion-item>
+                <ion-row class="rowfield" align-items-center >
+                  <ion-col col-2  align-self-center >
+                    <ion-icon name="ios-contact-outline"></ion-icon>
+                  </ion-col>
+                  <ion-col col-10 align-self-center>
+                    <input type="email" placeholder="Email" class="ng-trim-ignore" trim formControlName="email" [(ngModel)]="email" required/>
+                  </ion-col>
+                </ion-row>
+              </ion-item>
+              <div class="animate-slide" [@fadeInOut] *ngIf="!form.controls.password.valid && (form.controls.password.dirty || submitAttempt) && !form.controls.password.pending" >
+                <p *ngIf="form.value.password == ''">Password required</p>
+                <div id="curvedarrow"></div>
+              </div>
+              <ion-item>
+                <ion-row class="rowfield" align-items-center >
+                  <ion-col col-2  align-self-center>
+                    <ion-icon name="ios-lock-outline"></ion-icon>
+                  </ion-col>
+                  <ion-col col-10 align-self-center>
+                    <input type="password" class="ng-trim-ignore" trim placeholder="Password" formControlName="password" [(ngModel)]="password"  required/>
+                  </ion-col>
+                </ion-row>
+                <p (click)="forgotpass()" class="ftpass">Forgot Password ?</p>
+              </ion-item>
+            <ion-item class="submiti">
+              <ion-row align-items-center>
+                <ion-col class="submitc">
+                  <button class="loginb" ion-button>LOGIN</button>
+                </ion-col>
+              </ion-row>
+            </ion-item>    
+            </ion-card-content>
+          </ion-card>
+        </form>
+
+      </div>
+
+    </ion-grid>
+
+
+</ion-content>

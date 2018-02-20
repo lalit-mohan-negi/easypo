@@ -1,0 +1,113 @@
+page-delivery {
+    .outstnd{
+        color: #f5620a;
+    }
+    .segmentout{
+        border: 1px solid #CECECE;
+    }
+    .segment-md .segment-button{
+        border-bottom: none;
+        border: 1px solid #CECECE;
+    }
+    .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+        border-color: #1e953e;
+        opacity: 1;
+        background-color: #1e953e;
+        color: #fff;
+    }
+    .segment-md .segment-button{
+        color: #515151;
+    }
+    .recentimg{
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto;
+        height: 60px;
+        width: 60px;
+     }
+    .rcntfst{
+        font-size: 10px;
+        text-align: center;
+    }
+    .blankar{
+        text-align: center;
+    }
+    ion-col .rcnth{
+        font-size: 1.0rem;
+        color: #1A8638;
+        font-weight: bold;
+        span{
+            color: #1A8638;
+            font-size: 1.6rem;
+        }
+    }
+    ion-col .rcntth{
+        font-weight: bold;
+    }
+    .rcntbtn{
+        background-color: #1E953E;
+        box-shadow: none;
+        height: 3.2rem;
+        padding: 10px;
+        width: 90px;
+    }
+    .rcntbtnP{
+        background-color: #EF9B31;
+        box-shadow: none;
+        height: 3.2rem;
+        padding: 10px;
+        width: 90px;
+    }
+    .rcnthrd{
+        padding: 0px;
+        ion-icon{
+            font-size: 0.9em;
+        }
+    }
+    ion-icon{
+        font-size: 0.8em;
+    }
+    .reqst{
+        padding: 13px 6px;
+    }
+    .time ion-icon{
+        float: right;
+    }
+    .time{
+        padding: 0px;
+    }
+    .rcntthrd1{
+        font-size: 1.0rem;
+        span{
+            font-weight:bold;
+        }
+    }
+    .dof{
+        padding: 10px 0 0 10px;
+    }
+    .deliverypad {
+        padding: 16px 16px 0 16px;
+    }
+    .label-md {
+        margin: 0;
+    }
+    .item-md{
+        padding: 0px;
+    }
+    .item-md.item-block .item-inner{
+        padding: 0px;
+    }
+
+    .notificationbadge{
+        border-radius: 50px;
+        color: #1e953e;
+        background-color: #ffffff;
+        position: absolute;
+        top: -4px;
+        left: 18px;
+        padding: 2px;
+    }
+    .options-button{
+        position: relative;
+    }
+}

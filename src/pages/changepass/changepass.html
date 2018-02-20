@@ -1,0 +1,97 @@
+<!--
+  Generated template for the ChangepassPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>Change Password</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only><ion-icon name=""></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content class="logincon" hide-nav-bar="true">
+  <br>
+  <div class="rectangle">
+    <div class="circle"></div>
+  </div>
+  <ion-grid>
+
+    <div class="customcard">
+        
+          <div class="paperplanebg" >
+            <img class="logoimg" src="./assets/easypo/logo.png"/>
+            <div class="paperplane">  
+              <ion-icon class="paperplanei" name="ios-paper-plane"></ion-icon>
+            </div>
+          </div> 
+        <form [formGroup]="cform" (ngSubmit)="changepcall()" novalidate>
+        <ion-card class="logincard">
+          <ion-card-content>
+            <div class="animate-slide" [@fadeInOut] *ngIf="!cform.controls.opassword.valid  && (cform.controls.opassword.dirty || submitAttempt) && !cform.controls.opassword.pending" >
+              <p *ngIf="cform.value.opassword != ''">Old Password not valid</p>
+              <p *ngIf="cform.value.opassword == ''">Old Password required</p>
+              <div id="curvedarrow"></div>
+            </div>
+            <ion-item>
+              <ion-row class="rowfield" align-items-center >
+                <ion-col col-2  align-self-center >
+                  <ion-icon class="foricon" name="ios-lock-outline"></ion-icon>
+                </ion-col>
+                <ion-col col-10 align-self-center>
+                  <input type="password" placeholder="Old Password" trim formControlName="opassword" class="ng-trim-ignore" [(ngModel)]="opassword" minlength="6" required/>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+            <div class="animate-slide" [@fadeInOut] *ngIf="!cform.controls.password.valid  && (cform.controls.password.dirty || submitAttempt) && !cform.controls.password.pending" >
+              <p *ngIf="cform.value.password != ''">Enter at least 6 characters</p>
+              <p *ngIf="cform.value.password == ''">Password required</p>
+              <div id="curvedarrow"></div>
+            </div>
+            <ion-item>
+              <ion-row class="rowfield" align-items-center >
+                <ion-col col-2  align-self-center >
+                  <ion-icon class="foricon" name="ios-lock-outline"></ion-icon>
+                </ion-col>
+                <ion-col col-10 align-self-center>
+                  <input type="password" placeholder="Password" trim formControlName="password" class="ng-trim-ignore" [(ngModel)]="password" minlength="6" required/>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+            <div class="animate-slide" [@fadeInOut] *ngIf="!cform.controls.cpassword.valid  && (cform.controls.cpassword.dirty || submitAttempt) && !cform.controls.cpassword.pending" >
+              <p *ngIf="cform.value.cpassword != ''">Confirm Password and Password not matching</p>
+              <p *ngIf="cform.value.cpassword == ''">Confirm Password required</p>
+              <div id="curvedarrow"></div>
+            </div>
+            <ion-item>
+              <ion-row class="rowfield" align-items-center >
+                <ion-col col-2  align-self-center >
+                  <ion-icon class="foricon" name="ios-lock-outline"></ion-icon>
+                </ion-col>
+                <ion-col col-10 align-self-center>
+                  <input type="password" placeholder="Confirm Password" trim formControlName="cpassword" class="ng-trim-ignore" minlength="6" [(ngModel)]="cpassword" required/>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+          <ion-item class="submiti">
+            <ion-row align-items-center>
+              <ion-col class="submitc">
+                <button class="loginb" ion-button>Change Password</button>
+              </ion-col>
+            </ion-row>
+          </ion-item>    
+          </ion-card-content>
+        </ion-card>
+      </form>
+
+    </div>
+
+  </ion-grid>
+
+
+</ion-content>
+

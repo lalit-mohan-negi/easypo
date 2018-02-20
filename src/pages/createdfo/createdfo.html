@@ -1,0 +1,740 @@
+
+<ion-header>
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button icon-only menuToggle>
+              <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+            </button>
+          </ion-buttons>
+      <ion-title text-center>Create DOF</ion-title>
+      <ion-buttons right>
+        <button ion-button icon-only class="options-button" (click)="notification()"><ion-icon name="ios-notifications-outline"></ion-icon></button>
+        <ion-badge item-end class="notificationbadge" *ngIf="noticount>0" ></ion-badge>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content>
+  
+  <!-- Reviced Section -->
+    <div>
+      <form #myForm="ngForm" (ngSubmit)="updatedoffff()" novalidate>
+        <div>
+          <p class="orderfrst">REMIT TO:</p>
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>Company</label>
+            </ion-col>
+            <ion-col>
+              <input type="text" [(ngModel)]="vendor_companys"  name="vendor_company" #vendorcompany="ngModel" required>  
+            </ion-col>
+          </ion-row>         
+          <div *ngIf="vendorcompany.errors && (vendorcompany.dirty || vendorcompany.touched)">
+            <div class="validation" *ngIf="vendorcompany.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>Address</label>
+            </ion-col>
+            <ion-col>
+              <input type="text" id="vendor_address" [(ngModel)]="vendor_addresss" name="vendor_address" #vendoraddress="ngModel" required>  
+            </ion-col> 
+          </ion-row>         
+          <div *ngIf="vendoraddress.errors && (vendoraddress.dirty || vendoraddress.touched)">
+            <div class="validation" *ngIf="vendoraddress.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>City</label>
+            </ion-col>
+            <ion-col>
+              <input type="text" [(ngModel)]="vendor_citys" id="vendor_city" name="vendor_city" #vendorcity="ngModel" required>  
+            </ion-col> 
+          </ion-row>     
+          <div *ngIf="vendorcity.errors && (vendorcity.dirty || vendorcity.touched)">
+            <div class="validation" *ngIf="vendorcity.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>State</label>
+            </ion-col>
+            <ion-col>
+              <input type="text" [(ngModel)]="vendor_states" id="vendor_state" name="vendor_state" #vendorstate="ngModel" required>  
+            </ion-col> 
+          </ion-row> 
+          <div *ngIf="vendorstate.errors && (vendorstate.dirty || vendorstate.touched)">
+            <div class="validation" *ngIf="vendorstate.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>Zip Code</label>
+            </ion-col>
+            <ion-col>
+              <input type="text" [(ngModel)]="vendor_zipcodes" id="vendor_zipcode" name="vendor_zipcode" #vendorzipcode="ngModel" required> 
+            </ion-col> 
+          </ion-row> 
+          <div *ngIf="vendorzipcode.errors && (vendorzipcode.dirty || vendorzipcode.touched)">
+            <div class="validation" *ngIf="vendorzipcode.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>Phone</label>
+            </ion-col>
+            <ion-col>
+              <input type="text" [(ngModel)]="vendor_phones" id="vendor_phone" name="vendor_phone" #vendorphone="ngModel" required> 
+            </ion-col> 
+          </ion-row> 
+          <div *ngIf="vendorphone.errors && (vendorphone.dirty || vendorphone.touched)">
+            <div class="validation" *ngIf="vendorphone.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>Fax</label>
+            </ion-col>
+            <ion-col>
+              <input type="text" [(ngModel)]="vendor_faxs" id="vendor_fax" name="vendor_fax" #vendorfax="ngModel" required>
+            </ion-col> 
+          </ion-row>
+          <div *ngIf="vendorfax.errors && (vendorfax.dirty || vendorfax.touched)">
+            <div class="validation" *ngIf="vendorfax.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>Email</label>
+            </ion-col>
+            <ion-col>
+              <input type="email" [(ngModel)]="vendor_emails" id="vendor_email" name="vendor_email" #vendoremail="ngModel" required>
+            </ion-col> 
+          </ion-row>
+          <div *ngIf="vendoremail.errors && (vendoremail.dirty || vendoremail.touched)">
+            <div class="validation" *ngIf="vendoremail.errors.required"> This field is required </div>
+          </div>
+            
+        </div>
+     
+        <ion-list class="bssa">
+          <ion-item class="orderitem">
+            SALES REP INFO:
+          </ion-item>
+        </ion-list>  
+  
+        <ion-row class="table">
+          <ion-col col-4>
+              <label fixed>Sales Agency</label>
+          </ion-col>
+          <ion-col >
+              <input type="text" [(ngModel)]="sales_agencys" name="sales_agency" #salesagency="ngModel" required>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="salesagency.errors && (salesagency.dirty || salesagency.touched)">
+          <div class="validation" *ngIf="salesagency.errors.required"> This field is required </div>
+        </div>  
+  
+        <ion-row class="table">
+          <ion-col col-4>
+              <label fixed>Sales Rep</label>
+          </ion-col>
+          <ion-col>
+              <input type="text" [(ngModel)]="sales_reps" name="sales_rep" #salesrep="ngModel" required >
+          </ion-col>
+        </ion-row>
+        <div *ngIf="salesrep.errors && (salesrep.dirty || salesrep.touched)">
+          <div class="validation" *ngIf="salesrep.errors.required"> This field is required </div>
+        </div>
+  
+        <ion-row class="table">
+          <ion-col col-4>
+              <label fixed>Territory#</label>
+          </ion-col>
+          <ion-col >
+              <input type="text" [(ngModel)]="sales_territorys" name="sales_territory" #salesterritory="ngModel" required>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="salesterritory.errors && (salesterritory.dirty || salesterritory.touched)">
+          <div class="validation" *ngIf="salesterritory.errors.required"> This field is required </div>
+        </div>
+  
+        <ion-row class="table">
+          <ion-col col-4>
+              <label fixed>Phone Number</label>
+          </ion-col>
+          <ion-col >
+              <input type="text" [(ngModel)]="sales_phones" name="sales_phone" #salesphone="ngModel" required>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="salesphone.errors && (salesphone.dirty || salesphone.touched)">
+          <div class="validation" *ngIf="salesphone.errors.required"> This field is required </div>
+        </div>
+  
+        <ion-row class="table">
+          <ion-col col-4>
+              <label fixed>No Restock Needed</label>
+          </ion-col>
+          <ion-col >
+              <ion-checkbox type="text" [(ngModel)]="restock_neededs" name="restock_needed" #restockneeded="ngModel" required></ion-checkbox>
+          </ion-col>
+        </ion-row>
+  
+        <div>
+          <p class="orderfrst">Restock Ship To:</p>
+    
+          <ion-row class="table">
+              <ion-col col-4>
+                  <label fixed>Attention:</label>
+              </ion-col>
+              <ion-col >
+                  <input type="text" [(ngModel)]="restock_attentions"  name="restock_attention"  #restockattention="ngModel" required>
+              </ion-col>
+            </ion-row>
+            <div *ngIf="restockattention.errors && (restockattention.dirty || restockattention.touched)">
+              <div class="validation" *ngIf="restockattention.errors.required"> This field is required </div>
+            </div>
+  
+            <ion-row class="table">
+                <ion-col col-4>
+                    <label fixed>Address:</label>
+                </ion-col>
+                <ion-col >
+                    <input type="text" [(ngModel)]="restock_addresss" name="restock_address" #restockaddress="ngModel" required>
+                </ion-col>
+              </ion-row>
+              <div *ngIf="restockaddress.errors && (restockaddress.dirty || restockaddress.touched)">
+                <div class="validation" *ngIf="restockaddress.errors.required"> This field is required </div>
+              </div>
+  
+              <ion-row class="table">
+                  <ion-col col-4>
+                      <label fixed>City:</label>
+                  </ion-col>
+                  <ion-col >
+                      <input type="text" [(ngModel)]="restock_citys" name="restock_city" #restockcity="ngModel" required>
+                  </ion-col>
+                </ion-row>
+              <div *ngIf="restockcity.errors && (restockcity.dirty || restockcity.touched)">
+                <div class="validation" *ngIf="restockcity.errors.required"> This field is required </div>
+              </div>
+  
+              <ion-row class="table">
+                  <ion-col col-4>
+                      <label fixed>State:</label>
+                  </ion-col>
+                  <ion-col >
+                      <input type="text" [(ngModel)]="restock_states" name="restock_state" #restockstate="ngModel" required>
+                  </ion-col>
+                </ion-row>
+              <div *ngIf="restockstate.errors && (restockstate.dirty || restockstate.touched)">
+                <div class="validation" *ngIf="restockstate.errors.required"> This field is required </div>
+              </div>
+  
+              <ion-row class="table">
+                  <ion-col col-4>
+                      <label fixed>Zip:</label>
+                  </ion-col>
+                  <ion-col >
+                      <input type="text" [(ngModel)]="restock_zips" name="restock_zip" #restockzip="ngModel" required>
+                  </ion-col>
+                </ion-row>
+              <div *ngIf="restockzip.errors && (restockzip.dirty || restockzip.touched)">
+                <div class="validation" *ngIf="restockzip.errors.required"> This field is required </div>
+              </div>
+          
+        </div> 
+  
+          <ion-list class="bssa">
+            <ion-item class="orderitem">
+              BILL TO:
+            </ion-item>
+          </ion-list> 
+  
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>Facility Name</label>
+            </ion-col>
+            <ion-col>
+              <ion-select [(ngModel)]="bill_to_select_facility__name" name="bill_to_select_facility__name" #billtoselectfacilityname="ngModel" (ionChange)='func($event)' required>
+                <ion-option *ngFor="let client_dof of clients; let i = index" [value]="client_dof.id">
+                  {{client_dof.company}}
+                </ion-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>  
+          <div *ngIf="billtoselectfacilityname.errors && (billtoselectfacilityname.dirty || billtoselectfacilityname.touched)">
+            <div class="validation" class="validation" *ngIf="billtoselectfacilityname.errors.required"> This field is required </div>
+          </div>
+              
+              <!-- <input type="text" [(ngModel)]="bill_to_facility_name" name="bill_to_facility_name" #billtofacilityname="ngModel" (ionChange)='func($event)' ngModel required>-->
+
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>Facility Contact Name</label>
+            </ion-col>
+            <ion-col>
+              <input type="text" [(ngModel)]="bill_to_facility_names" name="bill_to_facility_name" #billtofacilityname="ngModel" ngModel required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="billtofacilityname.errors && (billtofacilityname.dirty || billtofacilityname.touched)">
+            <div class="validation" *ngIf="billtofacilityname.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+              <label fixed>Email</label>
+            </ion-col>
+            <ion-col >
+              <input type="email" [(ngModel)]="bill_to_emails" name="bill_to_email" #billtoemail="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="billtoemail.errors && (billtoemail.dirty || billtoemail.touched)">
+            <div class="validation" *ngIf="billtoemail.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>Phone Number</label>
+            </ion-col>
+            <ion-col>
+                <input type="text" [(ngModel)]="bill_to_phones" name="bill_to_phone" #billtophone="ngModel" ngModel required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="billtophone.errors && (billtophone.dirty || billtophone.touched)">
+            <div class="validation" *ngIf="billtophone.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>Address</label>
+            </ion-col>
+            <ion-col >
+                <input type="text" [(ngModel)]="bill_to_addresss" name="bill_to_address" #billtoaddress="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="billtoaddress.errors && (billtoaddress.dirty || billtoaddress.touched)">
+            <div class="validation" *ngIf="billtoaddress.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>State</label>
+            </ion-col>
+            <ion-col >
+                <input type="text" [(ngModel)]="bill_to_states" name="bill_to_state" #billtostate="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="billtostate.errors && (billtostate.dirty || billtostate.touched)">
+            <div class="validation" *ngIf="billtostate.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>Zip code</label>
+            </ion-col>
+            <ion-col >
+                <input type="text" [(ngModel)]="bill_to_zipcodes" name="bill_to_zipcode" #billtozipcode="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="billtozipcode.errors && (billtozipcode.dirty || billtozipcode.touched)">
+            <div class="validation" *ngIf="billtozipcode.errors.required"> This field is required </div>
+          </div>
+     
+          <ion-list class="bssa">
+            <ion-item class="orderitem">
+              SHIP TO:
+            </ion-item>
+          </ion-list> 
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>Attention</label>
+            </ion-col>
+            <ion-col >
+                <input type="text" [(ngModel)]="ship_to_attentions" name="ship_to_attention" #shiptoattention="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="shiptoattention.errors && (shiptoattention.dirty || shiptoattention.touched)">
+            <div class="validation" *ngIf="shiptoattention.errors.required"> This field is required </div>
+          </div> 
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>Phone Number</label>
+            </ion-col>
+            <ion-col >
+                <input type="text" [(ngModel)]="ship_to_phones" name="ship_to_phone" #shiptophone="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="shiptophone.errors && (shiptophone.dirty || shiptophone.touched)">
+            <div class="validation" *ngIf="shiptophone.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>Address</label>
+            </ion-col>
+            <ion-col>
+                <input type="text" [(ngModel)]="ship_to_addresss" name="ship_to_address" #shiptoaddress="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="shiptoaddress.errors && (shiptoaddress.dirty || shiptoaddress.touched)">
+            <div class="validation" *ngIf="shiptoaddress.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>City</label>
+            </ion-col>
+            <ion-col >
+                <input type="text" [(ngModel)]="ship_to_citys" name="ship_to_city" #shiptocity="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="shiptocity.errors && (shiptocity.dirty || shiptocity.touched)">
+            <div class="validation" *ngIf="shiptocity.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>State</label>
+            </ion-col>
+            <ion-col >
+                <input type="text" [(ngModel)]="ship_to_states" name="ship_to_state" #shiptostate="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="shiptostate.errors && (shiptostate.dirty || shiptostate.touched)">
+            <div class="validation" *ngIf="shiptostate.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>Zip</label>
+            </ion-col>
+            <ion-col>
+                <input type="text" [(ngModel)]="ship_to_zipcodes" name="ship_to_zipcode" #shiptozipcode="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="shiptozipcode.errors && (shiptozipcode.dirty || shiptozipcode.touched)">
+            <div class="validation" *ngIf="shiptozipcode.errors.required"> This field is required </div>
+          </div>   
+    
+        <div>
+          <p class="orderfrst">Patient Info:</p>
+    
+          <ion-row class="table">
+              <ion-col col-4>
+                  <label fixed>Patient Identifier:</label>
+              </ion-col>
+              <ion-col >
+                  <input type="text" [(ngModel)]="patient_identifiers" name="patient_identifier" #patientidentifier="ngModel" >
+              </ion-col>
+            </ion-row>
+    
+            <ion-row class="table">
+                <ion-col col-4>
+                    <label fixed>Surgeon:</label>
+                </ion-col>
+                <ion-col >
+                    <input type="text" [(ngModel)]="surgeons_one" name="surgeons_one" #surgedefdennn="ngModel" ngModel>
+                </ion-col>
+              </ion-row>
+    
+              <ion-row class="table">
+                  <ion-col col-4>
+                      <label fixed>Surgery Date:</label>
+                  </ion-col>
+                  <ion-col >
+                      <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MMMM DDDD YYYY" placeholder="Select Surgery Date" [(ngModel)]="surgery_dates"  name="surgery_date" #surgerydate="ngModel" style=" padding: 8px 8px 8px 8px; width: 100%; text-align: center;" [min]="today()" max="2050"  ngModel></ion-datetime>
+                  </ion-col>
+                </ion-row>
+  
+        </div>
+      
+      <div ngModelGroup="product_dof">
+        <ion-row class="table">
+          <ion-col>
+            <p class="orderfrst">Delivery Order Item:</p>
+          </ion-col>
+        </ion-row>
+        <div *ngFor="let product_dof of dofDetail.product_dof; let i=index;">
+            <ion-row class="table">
+              <ion-col class="adddoi">
+                <ion-icon (click)="adddoi()" *ngIf="i==0" [hidden]="i!=0" ios="ios-add-circle" md="md-add-circle"></ion-icon>
+                <ion-icon (click)="removedoi(i); myForm.control.markAsTouched()" *ngIf="i!=0" [hidden]="i==0" ios="ios-remove" md="md-remove"></ion-icon>
+              </ion-col>
+            </ion-row>
+
+
+            <ion-row class="table">
+                <ion-col col-4>
+                    <label fixed>ITEM:</label>
+                </ion-col>
+                <ion-col>
+                    <input type="text" [(ngModel)]="product_dof.item" [ngModelOptions]="{standalone: true}" name="item_name" #item="ngModel" required>
+                </ion-col>
+              </ion-row>
+              <div *ngIf="item.errors && (item.dirty || item.touched || item.untouched)">
+                  <div class="validation" *ngIf="item.errors.required"> This field is required </div>
+                </div>
+
+
+                
+          <ion-row class="table">
+              <ion-col col-4>
+                  <label fixed>DESCRIPTION:</label>
+              </ion-col>
+              <ion-col>
+                  <input maxlength="100" type="text" [(ngModel)]="product_dof.description" (ngModelChange)="changereps($event)" [ngModelOptions]="{standalone: true}" name="description_one" #description="ngModel" required>
+              </ion-col>
+            </ion-row>
+            <div *ngIf="description.errors && (description.dirty || description.touched || description.untouched)">
+              <div class="validation" *ngIf="description.errors.required"> This field is required </div>
+            </div>
+
+
+            <ion-row class="table">
+                <ion-col col-4>
+                    <label fixed>LOT#:</label>
+                </ion-col>
+                <ion-col>
+                    <input type="text" [(ngModel)]="product_dof.lot" [ngModelOptions]="{standalone: true}" name="lot_one" #lot="ngModel" required>
+                </ion-col>
+              </ion-row>
+              <div *ngIf="lot.errors && (lot.dirty || lot.touched || lot.untouched)">
+                <div class="validation" *ngIf="lot.errors.required"> This field is required </div>
+              </div>
+
+
+              <ion-row class="table">
+                  <ion-col col-4>
+                      <label fixed>QTY:</label>
+                  </ion-col>
+                  <ion-col>
+                      <input type="tel" pattern="[0-9]*" [(ngModel)]="product_dof.quantity" [ngModelOptions]="{standalone: true}" name="quantity_one" maxlength="2" (ngModelChange)="calculateprice($event, i)" #quantity="ngModel" required>
+                  </ion-col>
+                </ion-row>
+                <div *ngIf="quantity.errors && (quantity.dirty || quantity.touched || quantity.untouched)">
+                  <div class="validation" *ngIf="quantity.errors.required"> This field is required </div>
+                  <div class="validation" *ngIf="quantity.errors.maxlength"> Max 2 digits </div>
+                  <div class="validation" *ngIf="quantity.errors.pattern">Only numbers are allowed</div>
+                </div> 
+
+
+                <ion-row class="table">
+                    <ion-col col-4>
+                        <label fixed>UNIT PRICE:</label>
+                    </ion-col>
+                    <ion-col>
+                        <input type="tel" pattern="[0-9]*" [(ngModel)]="product_dof.unit_price" [ngModelOptions]="{standalone: true}" name="unit_price" maxlength="7" (ngModelChange)="calculateprice($event, i)" #unitprice="ngModel" required>
+                    </ion-col>
+                  </ion-row>
+                  <div *ngIf="unitprice.errors && (unitprice.dirty || unitprice.touched || unitprice.untouched)">
+                    <div class="validation" *ngIf="unitprice.errors.required"> This field is required </div>
+                    <div class="validation" *ngIf="unitprice.errors.maxlength"> Max 7 digits </div>
+                    <div class="validation" *ngIf="unitprice.errors.pattern">Only numbers are allowed</div>
+                  </div>
+
+
+                  <ion-row class="table">
+                      <ion-col col-4>
+                          <label fixed>TOTAL COST:</label>
+                      </ion-col>
+                      <ion-col>
+                          <input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="product_dof.total_cost" name="total_cost" #totalcost="ngModel" required>
+                      </ion-col>
+                    </ion-row>
+                    <div *ngIf="totalcost.errors && (totalcost.dirty || totalcost.touched)">
+                      <div class="validation" *ngIf="totalcost.errors.required"> This field is required </div>
+                    </div>
+          
+
+                
+
+<!--   
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>ITEM:</label>
+            </ion-col>
+            <ion-col>
+                <input type="text" [(ngModel)]="product_dof.item" [ngModelOptions]="{standalone: true}" name="{{product_dof[i].item}}" #item="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="item.errors && (item.dirty || item.touched || item.untouched)">
+            <div class="validation" *ngIf="item.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>DESCRIPTION:</label>
+            </ion-col>
+            <ion-col>
+                <input maxlength="100" type="text" [(ngModel)]="product_dof.description" (ngModelChange)="changereps($event)" [ngModelOptions]="{standalone: true}" name="{{product_dof[i].description}}" #description="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="description.errors && (description.dirty || description.touched || description.untouched)">
+            <div class="validation" *ngIf="description.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>LOT#:</label>
+            </ion-col>
+            <ion-col>
+                <input type="text" [(ngModel)]="product_dof.lot" [ngModelOptions]="{standalone: true}" name="{{product_dof[i].lot}}" #lot="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="lot.errors && (lot.dirty || lot.touched || lot.untouched)">
+            <div class="validation" *ngIf="lot.errors.required"> This field is required </div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>QTY:</label>
+            </ion-col>
+            <ion-col>
+                <input type="tel" pattern="[0-9]*" [(ngModel)]="product_dof.quantity" [ngModelOptions]="{standalone: true}" name="{{product_dof[i].quantity}}" maxlength="2" (ngModelChange)="calculateprice($event, i)" #quantity="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="quantity.errors && (quantity.dirty || quantity.touched || quantity.untouched)">
+            <div class="validation" *ngIf="quantity.errors.required"> This field is required </div>
+            <div class="validation" *ngIf="quantity.errors.maxlength"> Max 2 digits </div>
+            <div class="validation" *ngIf="quantity.errors.pattern">Only numbers are allowed</div>
+          </div> 
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>UNIT PRICE:</label>
+            </ion-col>
+            <ion-col>
+                <input type="tel" pattern="[0-9]*" [(ngModel)]="product_dof.unit_price" [ngModelOptions]="{standalone: true}" name="{{product_dof[i].unit_price}}" maxlength="7" (ngModelChange)="calculateprice($event, i)" #unitprice="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="unitprice.errors && (unitprice.dirty || unitprice.touched || unitprice.untouched)">
+            <div class="validation" *ngIf="unitprice.errors.required"> This field is required </div>
+            <div class="validation" *ngIf="unitprice.errors.maxlength"> Max 7 digits </div>
+            <div class="validation" *ngIf="unitprice.errors.pattern">Only numbers are allowed</div>
+          </div>
+  
+          <ion-row class="table">
+            <ion-col col-4>
+                <label fixed>TOTAL COST:</label>
+            </ion-col>
+            <ion-col>
+                <input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="product_dof.total_cost" name="{{product_dof[i].total_cost}}" #totalcost="ngModel" required>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="totalcost.errors && (totalcost.dirty || totalcost.touched)">
+            <div class="validation" *ngIf="totalcost.errors.required"> This field is required </div>
+          </div> -->
+  
+          </div>  
+        </div>
+ 
+        <div>
+         <br><br>
+          <ion-row class="table">
+            <ion-col col-9>
+              <!-- <ion-textarea maxlength="500"
+              (ngModelChange)="changerep($event)" class="repnotes" [(ngModel)]="notess_one" name="notess_one" #notessone="ngModel"  ></ion-textarea> -->
+            </ion-col>
+            <ion-col col-3>
+              <!-- <button *ngIf="attachment" [hidden]="!attachment" ion-button class="attachfl" type="button" (click)="chooseattachment()">Replace file</button>
+              <button *ngIf="!attachment" [hidden]="attachment" ion-button class="attachfl" type="button" (click)="chooseattachment()">Attach a file</button> -->
+            </ion-col>
+          </ion-row>
+        </div>
+  
+        <div>
+
+          <ion-list>
+  
+            <ion-row class="table">
+              <ion-col col-4>
+                  <label fixed>Subtotal:</label>
+              </ion-col>
+              <ion-col>
+                  <input type="number"  (ngModelChange)="calculatepricet($event, i)" [(ngModel)]="dofDetail.sub_total" name="cost" #cost="ngModel" required>
+              </ion-col>
+            </ion-row>
+            <div *ngIf="cost.errors && (cost.dirty || cost.touched)">
+              <div class="validation" *ngIf="cost.errors.required"> This field is required </div>
+            </div>
+  
+            <ion-row class="table">
+              <ion-col col-4>
+                  <label fixed>Processing Fee:</label>
+              </ion-col>
+              <ion-col>
+                  <input type="tel" pattern="[0-9]*"
+                  (ngModelChange)="calculatepricetpro($event, i)" maxlength="4" [(ngModel)]="dofDetail.processing_fee"  name="processing_fee" #processingfee="ngModel" required>
+              </ion-col>
+            </ion-row>
+            <div *ngIf="processingfee.errors && (processingfee.dirty || processingfee.touched)">
+              <div class="validation" *ngIf="processingfee.errors.required"> This field is required </div>
+              <div class="validation" *ngIf="processingfee.errors.maxlength"> Please enter a value less than or equal to 9999. </div>
+              <div class="validation" *ngIf="processingfee.errors.pattern">Only numbers are allowed</div>
+            </div>
+  
+            <ion-row class="table">
+              <ion-col col-4>
+                  <label fixed>Shipping and Handling:</label>
+              </ion-col>
+              <ion-col>
+                  <input type="tel" pattern="[0-9]*" maxlength="4"
+                  (ngModelChange)="calculatepricetsh($event, i)" [(ngModel)]="dofDetail.shipping"  name="shipping" #shipping="ngModel" required>
+              </ion-col>
+            </ion-row>
+            <div *ngIf="shipping.errors && (shipping.dirty || shipping.touched)">
+              <div class="validation" *ngIf="shipping.errors.required"> This field is required </div>
+              <div class="validation" *ngIf="shipping.errors.maxlength"> Please enter a value less than or equal to 9999. </div>
+              <div class="validation" *ngIf="shipping.errors.pattern">Only numbers are allowed</div>
+            </div>
+          
+            <ion-item class="orderfrsthd orderdeader1">
+              <ion-row class="table">
+                <ion-col col-5 class="orderfrsthead">
+                  <p>Total Cost:</p>
+                </ion-col>
+                <ion-col col-5 class="orderfrsthead1">
+                  <p>{{dofDetail.cost}}</p>
+                </ion-col>
+                <ion-col col-2 class="orderfrsthead1">
+                  <p>USD</p>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+
+          <ion-row>
+        
+          </ion-row>
+
+          <br>
+          <ion-row>
+              
+              <ion-col text-center>
+                  <ion-textarea maxlength="500"
+                  (ngModelChange)="changerep($event)" class="repnotes" [(ngModel)]="notess_one" name="notess_one" #notessone="ngModel" ></ion-textarea>
+                  <p>Attachment</p>
+                  <!-- <button ion-button (click)="openActionBar()"><ion-icon name="add"></ion-icon></button> -->
+                  <button *ngIf="dofDetail.attachment" type="button" [hidden]="!dofDetail.attachment" ion-button class="attachfl btn-one" type="button" (click)="openActionBar()">Replace file</button>
+                  <button *ngIf="!dofDetail.attachment" type="button" [hidden]="dofDetail.attachment" ion-button class="attachfl btn-one" type="button" (click)="openActionBar()">Attach a file</button>
+               </ion-col>
+            </ion-row>
+
+        </div>
+        <ion-row >
+          <ion-col class="colorderbutton">
+            <button [disabled]="myForm.invalid || myForm.pending" ion-button class="orderbutton close" >UPDATE</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+  
+  
+  </ion-content>
+  

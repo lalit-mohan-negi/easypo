@@ -1,0 +1,43 @@
+<ion-menu id="myMenu" [content]="content">
+  <!-- <ion-header>
+    <ion-toolbar>
+      <ion-title></ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <ion-content hide-nav-bar="true">
+    <div class="sideheader" *ngIf="data">
+      <img *ngIf="data.user_meta.profile_img; else other" class="proimage"  src="{{profilepicURl}}{{data.user_meta.profile_img}}" src-fallback="./assets/easypo/Ripple.svg" >
+      <ng-template #other>
+        <img class="proimage" src="./assets/easypo/profile1.png" src-fallback="./assets/easypo/Ripple.svg">
+      </ng-template>
+      <h4 class="sideusernm" *ngIf="data.first_name">{{data.first_name}} {{data.last_name}}</h4>
+    </div>
+    <ion-list>
+      <button menuClose ion-item class="sidemenub" *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-row  align-items-center>
+          <ion-col col-3>
+            <ion-icon class="sidemenuicon" name="{{p.icon}}"></ion-icon>
+          </ion-col>
+          <ion-col>
+            {{p.title}}
+          </ion-col>
+        </ion-row>
+      </button>
+      <button menuClose ion-item class="sidemenul" (click)="showConfirm()">
+        <ion-row  align-items-center>
+          <ion-col col-3>
+            <ion-icon class="sidemenuiconl" name="ios-log-out-outline"></ion-icon>&nbsp;&nbsp;
+          </ion-col>
+          <ion-col>
+            LOGOUT
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,60 @@
+page-profile {
+    .profileimg{
+        margin: 0 auto;
+        display: block;
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+    }
+    .profiledes{
+        color: #696464;
+        margin: 0;
+        font-size: 12px;
+    }
+    .profilebg{
+        background-color: #D8D8D8;
+        padding: 15px 0;
+    }
+    .item-md{
+        border-bottom: 1px solid #D6D6D6;
+    }
+    .label-md[stacked]{
+        font-size: 1.6rem;
+        font-weight: normal;
+        text-transform: none;
+        color: #000;    
+    }
+    .toggle-md-secondary.toggle-checked .toggle-inner {
+        background-color: #1e953e;
+    }
+    .sidemenulog{
+        background-color: #1e953e;
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+    }
+    .forwardarr{
+        float: right;
+    }
+    .item-label-stacked .text-input-md, .item-label-floating .text-input-md{
+        margin-left: 0;
+        margin-top: 5px;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    .item-input-has-focus .label-md[stacked], .item-input-has-focus .label-md[floating], .input-has-focus .label-md[floating]{
+        color: #1E953E;
+    }
+    .button-md.activated{
+        background-color: #76e293;
+    }
+    h2 {
+        margin-top: 0.6rem;
+    }
+    p.edit {
+        font-size: 0.7em;
+        text-align: center;
+        margin: 0;
+        padding: 5px 0px 0 0;
+    }
+}
