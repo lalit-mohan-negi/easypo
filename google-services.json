@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "902367259704",
+    "firebase_url": "https://easypo-5bdcf.firebaseio.com",
+    "project_id": "easypo-5bdcf",
+    "storage_bucket": "easypo-5bdcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902367259704:android:0583c89b79dd9883",
+        "android_client_info": {
+          "package_name": "io.easypo.myeasyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902367259704-2lrd3lgfaldqrond75ost7s4ppchpgq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCadJ7geXVOETx5_o9WyIK47F85EC9x1Lo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
